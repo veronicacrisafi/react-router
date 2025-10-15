@@ -12,6 +12,12 @@ export default function HomePage() {
                 </nav>
             </header>
 
+            <main>
+                <h1 className="welcome-img">Welcome in my firts mini e-commerce!🛍️</h1>
+
+
+            </main>
+
         </>
     )
 }
