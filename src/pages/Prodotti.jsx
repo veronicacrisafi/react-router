@@ -1,4 +1,5 @@
 import axios from "axios"
+import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react"
 export default function Prodotti() {
     const [products, setProducts] = useState([])
@@ -12,6 +13,11 @@ export default function Prodotti() {
     return (
 
         <div className="container">
+            <nav>
+                <Link to="/">Home Page</Link>
+                <NavLink to="/presentazione">Chi Siamo</NavLink>
+                <NavLink to="/prodotti">Prodotti</NavLink>
+            </nav>
             <div className="row">
                 {products.map((prodotto) =>
                     <div className="col-4 py-3" key={prodotto.id}>
