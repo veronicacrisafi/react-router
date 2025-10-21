@@ -8,18 +8,18 @@ import { Mirage } from 'ldrs/react'
 export default function Prodotto() {
     const { id } = useParams();
     const [product, setProduct] = useState(null)
-    const endpoit = `https://fakestoreapi.com/products/${id}`;
-    console.log(endpoit);
+    const endpoint = `https://fakestoreapi.com/products/${id}`;
+    console.log(endpoint);
 
     useEffect(() => {
         setTimeout(() => {
-            fetchProdotto(endpoit)
+            fetchProdotto(endpoint)
 
         }, 3000)
     }, []);
 
-    function fetchProdotto(endpoit) {
-        axios.get(endpoit)
+    function fetchProdotto(endpoint) {
+        axios.get(endpoint)
             .then(res => {
                 console.log(res.data);
                 setProduct(res.data)
@@ -29,7 +29,6 @@ export default function Prodotto() {
 
     return (
         <>
-
             {product !== null ?
                 (<ProductCard product={product} />)
                 :
@@ -42,9 +41,6 @@ export default function Prodotto() {
                     <div>Loading...</div>
                 </div>
                 )}
-
-
-
         </>
     )
 }
