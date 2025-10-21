@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import ChiSiamo from './pages/ChiSiamo';
 import Prodotti from './pages/Prodotti';
 import Prodotto from "./pages/Prodotto";
+import PaginaErrore from "./pages/PaginaErrore";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="presentazione" element={<ChiSiamo />} />
             <Route path="prodotti" element={<Prodotti />} />
             <Route path="prodotti/:id" element={<Prodotto />} />
+            <Route path="errore" element={<PaginaErrore />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

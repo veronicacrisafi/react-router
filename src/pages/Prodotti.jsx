@@ -27,7 +27,7 @@ export default function Prodotti() {
                                     <h5 className="card-title">{prodotto.title}</h5>
 
                                 </Link>
-                                <p className="card-text">prezzo: {prodotto.price}</p>
+                                <p className="card-text">prezzo: {prodotto.price} €</p>
                                 <p className="card-text">categoria: {prodotto.category}</p>
                                 <p className="card-text">valutazione: {prodotto.rating.rate}</p>
                                 <p className="card-text">conteggio: {prodotto.rating.count}</p>

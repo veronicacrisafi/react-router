@@ -1,20 +1,24 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import { Mirage } from 'ldrs/react'
+import PaginaErrore from "./PaginaErrore";
+
 
 
 export default function Prodotto() {
     const { id } = useParams();
+    const navigate = useNavigate()
     const [product, setProduct] = useState(null)
+    const [errore, setErrore] = useState(false)
     const endpoint = `https://fakestoreapi.com/products/${id}`;
     console.log(endpoint);
+
 
     useEffect(() => {
         setTimeout(() => {
             fetchProdotto(endpoint)
-
         }, 3000)
     }, []);
 
@@ -22,17 +26,26 @@ export default function Prodotto() {
         axios.get(endpoint)
             .then(res => {
                 console.log(res.data);
-                setProduct(res.data)
+                if (res.data && res.data.id) {
+                    setProduct(res.data)
+                } else {
+                    setErrore(true);
+                }
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                setErrore(true);
+            })
     }
 
     return (
         <>
-            {product !== null ?
-                (<ProductCard product={product} />)
-                :
-                (<div className="vh-100 text-center">
+            {errore ? (
+                <PaginaErrore />
+            ) : product !== null ? (
+                <ProductCard product={product} />
+            ) : (
+                <div className="vh-100 text-center">
                     <Mirage
                         size="100"
                         speed="2.5"
@@ -40,7 +53,7 @@ export default function Prodotto() {
                     />
                     <div>Loading...</div>
                 </div>
-                )}
+            )}
         </>
     )
 }
