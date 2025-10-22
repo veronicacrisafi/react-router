@@ -38,22 +38,20 @@ export default function Prodotto() {
             })
     }
 
-    return (
-        <>
-            {errore ? (
-                <PaginaErrore />
-            ) : product !== null ? (
-                <ProductCard product={product} />
-            ) : (
-                <div className="vh-100 text-center">
-                    <Mirage
-                        size="100"
-                        speed="2.5"
-                        color="black"
-                    />
-                    <div>Loading...</div>
-                </div>
-            )}
-        </>
-    )
+    if (errore) {
+        return <PaginaErrore />
+    } else if (product !== null) {
+        return <ProductCard product={product} />
+    } else {
+        return (
+            <div className="vh-100 text-center">
+                <Mirage
+                    size="100"
+                    speed="2.5"
+                    color="black"
+                />
+                <div>Loading...</div>
+            </div>
+        )
+    }
 }

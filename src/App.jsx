@@ -16,7 +16,7 @@ function App() {
             <Route path="presentazione" element={<ChiSiamo />} />
             <Route path="prodotti" element={<Prodotti />} />
             <Route path="prodotti/:id" element={<Prodotto />} />
-            <Route path="errore" element={<PaginaErrore />}></Route>
+            <Route path="errore" element={<PaginaErrore />} />
           </Route>
         </Routes>
       </BrowserRouter>
