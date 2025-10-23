@@ -32,9 +32,9 @@ export default function Prodotto() {
                     setErrore(true);
                 }
             })
-            .catch(error => {
-                console.error(error);
-                setErrore(true);
+            .catch(errore => {
+                console.error(errore);
+                navigate('/errore', { replace: true });
             })
     }
 
