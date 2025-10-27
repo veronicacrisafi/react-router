@@ -1,10 +1,13 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import FavouriteContext from "../context/FavouriteContext";
 
 
 export default function Prodotti() {
     const [products, setProducts] = useState([])
+    const { toggleFavourite, isFavourite } = useContext(FavouriteContext)
 
     function fetchProducts() {
         axios.get('https://fakestoreapi.com/products')
@@ -32,7 +35,11 @@ export default function Prodotti() {
                                 <p className="card-text">valutazione: {prodotto.rating.rate}</p>
                                 <p className="card-text">conteggio: {prodotto.rating.count}</p>
                             </section>
+                            <span onClick={() => toggleFavourite(prodotto.id)}>
+                                {isFavourite(prodotto.id) ? '❤️' : '🤍'}
+                            </span>
                         </div>
+
                     </div>
                 )}
             </div>

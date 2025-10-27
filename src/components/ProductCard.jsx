@@ -1,4 +1,10 @@
+
+import FavouriteContext from "../context/FavouriteContext";
+import { useContext } from "react";
+
 export default function ProductCard({ product }) {
+
+    const { favourite, setFavourite, toggleFavourite, isFavourite } = useContext(FavouriteContext)
 
     return (
         <>
@@ -19,6 +25,9 @@ export default function ProductCard({ product }) {
                     <p className="card-text">valutazione: {product.rating?.rate}</p>
                     <p className="card-text">conteggio: {product.rating?.count}</p>
                 </section>
+                <span onClick={() => toggleFavourite(product.id)}>
+                    {isFavourite(product.id) ? '❤️' : '🤍'}
+                </span>
             </div>
 
         </>
